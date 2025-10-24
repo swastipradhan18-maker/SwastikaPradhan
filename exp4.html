@@ -8,21 +8,28 @@
 <body>
     <h1 align="center">Hotel Room Booking Form</h1>
     <form action="" align="center">
+        
+        <!-- Name -->
         <label for="fullname">Full Name:</label>
         <input type="text" id="fullname" name="fullname" required><br><br>
 
+        <!-- Email -->
         <label for="email">Email:</label>
         <input type="email" id="email" name="email" required><br><br>
 
+        <!-- Phone -->
         <label for="phone">Phone:</label>
         <input type="tel" id="phone" name="phone" required><br><br>
 
+        <!-- Check in -->
         <label for="checkin">Check-in Date:</label>
         <input type="date" id="checkin" name="checkin" required><br><br>
 
+        <!-- Check out -->
         <label for="checkout">Check-out Date:</label>
         <input type="date" id="checkout" name="checkout" required><br><br>
 
+        <!-- Room type -->
         <label for="room">Room Type:</label>
         <select name="room" id="room">
             <option value="single">Single Room</option>
@@ -33,12 +40,15 @@
             <option value="standard">Standard Room</option>
         </select><br><br>
 
+        <!-- No. of guests -->
         <label for="guests">Number of Guests:</label>
         <input type="number" name="guests" id="guests" min="1" max="10"><br><br>
 
+        <!-- Requests -->
         <label for="requests">Special Requests</label><br>
         <textarea name="requests" id="requests" cols="50" rows="5"></textarea><br><br>
 
+        <!-- Buttons -->
         <input type="submit" value="Book Now">
         <input type="reset" value="Reset Form">
     </form>
