@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Responsive Product Grid</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background: #f4f4f4;
+    }
+
+    .grid-container {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+
+    .product-card {
+      background: #fff;
+      padding: 15px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    .product-card img {
+      width: 100%;
+      height: auto;
+      max-height: 270px;
+      object-fit: cover;
+      margin-bottom: 10px;
+    }
+
+    .product-name {
+      font-size: 1.2em;
+      margin: 10px 0;
+    }
+
+    .product-description {
+      font-size: 0.95em;
+      color: #555;
+    }
+
+    .product-price {
+      font-weight: bold;
+      color: #2c3e50;
+      margin-top: 10px;
+    }
+
+    /* Medium screens */
+    @media (min-width: 600px) {
+      .grid-container {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    /* Large screens */
+    @media (min-width: 900px) {
+      .grid-container {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <center><h1>Responsive Product Grid</h1></center>
+  <div class="grid-container">
+    <div class="product-card">
+      <img src="https://images.cnbctv18.com/uploads/2024/12/iphone-17-air-2024-12-c4f9de6e43559df3cc029e004d2f04b9.jpg?impolicy=website&width=1200&height=900" alt="Product 1">
+      <div class="product-name">iPhone 17 Pro</div>
+      <div class="product-description">High-quality cellphone with great features.</div>
+      <div class="product-price">₹134990</div>
+    </div>
+    <div class="product-card">
+      <img src="https://www.livemint.com/lm-img/img/2023/07/24/1600x900/2-0-322669020-Apple-MacBook-Air-13-copy-0_1680436414973_1690175424305.jpg" alt="Product 2">
+      <div class="product-name">Apple Mackbook AIR</div>
+      <div class="product-description"> 13-inch,Apple M4 chip with 10-core CPU and 10-core GPU,16 GB Unified Memory.</div>
+      <div class="product-price">₹109900</div>
+    </div>
+    <div class="product-card">
+      <img src="https://m.media-amazon.com/images/I/61oCISLE+PL.jpg" alt="Product 3">
+      <div class="product-name">Apple AirPods 4 </div>
+      <div class="product-description">Wireless Earbuds, Bluetooth Headphones, Personalised Spatial Audio</div>
+      <div class="product-price">₹49999</div>
+    </div>
+    <div class="product-card">
+      <img src="https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/watch-card-40-ultra3-202509_GEO_IN_FMT_WHH?wid=508&hei=472&fmt=p-jpg&qlt=95&.v=Yldjd2t3Ymo3YVZBc2hwblI4VFkzckh2d2I2QWRTY0NRMFJRd2UzeExSdFFDZGM4QmdBcmdndHprOFhNa3VSWnFWb1pSb0FnWG5iR3RrZnoxVjI4R1V2aHJVVVRvS3hUQ0EwVk8wak9Ka0hoTzVSdDB6M3IrYUY1WFNTTXErRzk" alt="Product 4">
+      <div class="product-name">Apple Smartwatch</div>
+      <div class="product-description">Trendy design with premium quality.</div>
+      <div class="product-price">₹89900</div>
+    </div>
+  </div>
+
+</body>
+</html>
