@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amazon Clone</title>
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .header {
+            background: #131921;
+            color: white;
+            padding: 10px 0;
+        }
+
+        .header .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .logo i {
+            color: #FF9900;
+            margin-right: 10px;
+        }
+
+        .search-bar {
+            display: flex;
+            flex: 1;
+            max-width: 600px;
+            margin: 0 20px;
+        }
+
+        .search-bar input {
+            flex: 1;
+            padding: 12px;
+            border: none;
+            font-size: 16px;
+        }
+
+        .search-btn {
+            background: #FF9900;
+            border: none;
+            padding: 12px 16px;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
+        }
+
+        .header-icons {
+            display: flex;
+            gap: 20px;
+        }
+
+        .icon-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-size: 14px;
+        }
+
+        .icon-item i {
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+
+        .hero img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+        }
+
+        .products h2 {
+            margin: 30px 0 20px;
+            font-size: 24px;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .product-card {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .product-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 4px;
+        }
+
+        .price {
+            font-size: 20px;
+            font-weight: bold;
+            color: #B12704;
+            margin: 10px 0;
+        }
+
+        .add-to-cart {
+            background: #FF9900;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .add-to-cart:hover {
+            background: #e68a00;
+        }
+
+        .faq {
+            margin-top: 40px;
+        }
+
+        .faq h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .faq-item {
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            margin-bottom: 10px;
+            overflow: hidden;
+        }
+
+        .faq-item summary {
+            cursor: pointer;
+            padding: 12px 16px;
+            background: #f5f5f5;
+            font-weight: bold;
+            list-style: none;
+        }
+
+        .faq-item summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .faq-item p {
+            padding: 10px 16px 16px;
+            background: #fff;
+        }
+
+        .feedback {
+            margin-top: 40px;
+            margin-bottom: 40px;
+        }
+
+        .feedback h2 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .feedback p {
+            margin-bottom: 15px;
+            color: #555;
+        }
+
+        .feedback-form {
+            display: grid;
+            gap: 12px;
+            max-width: 500px;
+        }
+
+        .feedback-form label {
+            font-weight: bold;
+            margin-bottom: 4px;
+            display: block;
+        }
+
+        .feedback-form input,
+        .feedback-form textarea,
+        .feedback-form select {
+            width: 100%;
+            padding: 8px 10px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            font: inherit;
+        }
+
+        .feedback-form textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        .feedback-rating {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            margin-top: 4px;
+        }
+
+        .feedback-rating input {
+            width: auto;
+        }
+
+        .feedback-btn {
+            background: #FF9900;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 5px;
+            width: 150px;
+        }
+
+        .feedback-btn:hover {
+            background: #e68a00;
+        }
+
+        .footer {
+            background: #232F3E;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 50px;
+        }
+
+        @media (max-width: 768px) {
+            .header .container {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .search-bar {
+                margin: 0;
+                order: 3;
+                width: 100%;
+            }
+            
+            .product-grid {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                gap: 15px;
+            }
+
+            .feedback-form {
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <i class="fab fa-amazon"></i>
+                <span>Amazon</span>
+            </div>
+            <div class="search-bar">
+                <input type="text" placeholder="Search Amazon">
+                <button class="search-btn"><i class="fas fa-search"></i></button>
+            </div>
+            <div class="header-icons">
+                <div class="icon-item">
+                    <i class="fas fa-user"></i>
+                    <span>Hello, sign in</span>
+                </div>
+                <div class="icon-item">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span>Cart</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="products">
+            <h2>Electronics Products</h2>
+            <div class="product-grid">
+                <div class="product-card">
+                    <img src="https://th.bing.com/th/id/R.530a9e08f311aa8b7f96fbc15480973e?rik=2gSzIIS9l9uT8g&riu=http%3a%2f%2fstore.hp.com%2fUKStore%2fHtml%2fMerch%2fImages%2fc05524638_1750x1285.jpg&ehk=ErMG%2bgYGbUKbihpkyytclduy8hosP6AJ5%2b16%2fSZPsJ8%3d&risl=&pid=ImgRaw&r=0" alt="Laptop">
+                    <h3>HP Laptop</h3>
+                    <p>HP laptops deliver reliable performance for everyday tasks like work, study, and multimedia with Intel Core processors, ample RAM (typically 8-16GB), and fast SSD storage.</p>
+                    <p class="price">$514.74</p>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+                
+                <div class="product-card">
+                    <img src="https://www.sony.co.uk/image/7b272a27dcbd11be50c5d5d4f4642732?fmt=png-alpha&wid=720" alt="Headphones">
+                    <h3>Sony Headphones</h3>
+                    <p>Sony headphones offer premium wireless audio with industry-leading active noise cancellation (ANC), Bluetooth connectivity, and high-resolution sound support like LDAC.</p>
+                    <p class="price">$43.10</p>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+
+                <div class="product-card">
+                    <img src="https://m.media-amazon.com/images/I/41ETkT7qI1L._SX425_.jpg" alt="Earbuds">
+                    <h3>Boult Earbuds</h3>
+                    <p>Boult earbuds provide budget-friendly true wireless audio with strong bass emphasis, long battery life, with 40-60 hours total playtime via fast Type-C charging.</p>
+                    <p class="price">$13.23</p>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="products">
+            <h2>Beauty Products</h2>
+            <div class="product-grid">
+                <div class="product-card">
+                    <img src="https://media6.ppl-media.com/tr:h-750,w-750,c-at_max,dpr-2,q-40/static/img/product/393236/dot-and-key-vitamin-c-e-super-bright-sunscreen-spf-50-pa-30-gm_1_display_1736336820_e3bf8d80.jpg" alt="Sunscreen">
+                    <h3>Dot & Key Sunscreen</h3>
+                    <p>Dot & Key sunscreens are lightweight, broad-spectrum SPF 50+ formulas that protect against UVA/UVB rays. It gives protection with no white cast, enriched with Vitamin C, E, and fruit extracts for glow and hydration.</p>
+                    <p class="price">$4.27</p>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+                
+                <div class="product-card">
+                    <img src="https://media6.ppl-media.com/tr:h-750,w-750,c-at_max,dpr-2/static/img/product/369576/wishcare-tinted-ceramide-lip-balm-with-spf50-pa-kojic-acid-and-niacinamide-for-brightens-and-protects5gm_7_display_1706529337_8f36c39f.jpg" alt="LipBalm">
+                    <h3>Wishcare Tinted Ceramide Lip Balm</h3>
+                    <p>WishCare Tinted Ceramide Lip Balm is a hydrating, tinted lip balm with SPF 50 PA+++ that moisturizes, protects from sun damage, and helps reduce lip pigmentation for soft, even-toned lips.</p>
+                    <p class="price">$2.59</p>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+
+                <div class="product-card">
+                    <img src="https://m.media-amazon.com/images/I/51bO6zzJj4L._SL1200_.jpg" alt="Serum">
+                    <h3>Minimalist Dark Spots Removal Serum</h3>
+                    <p>Minimalist 2% Alpha Arbutin Dark Spot Removal Serum is a lightweight, daily face serum designed to fade dark spots, acne marks, and tanning while promoting a more even skin tone.</p>
+                    <p class="price">$7.70</p>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="faq">
+            <h2>Frequently Asked Questions</h2>
+
+            <details class="faq-item">
+                <summary>How long does delivery take?</summary>
+                <p>For most products, delivery usually takes 3-5 business days depending on your location and availability.</p>
+            </details>
+
+            <details class="faq-item">
+                <summary>What is the return policy?</summary>
+                <p>You can request a return within 7 days of delivery if the item is in its original condition and packaging.</p>
+            </details>
+
+            <details class="faq-item">
+                <summary>Do you offer cash on delivery?</summary>
+                <p>Cash on delivery is available in select pin codes and will appear as an option during checkout if supported.</p>
+            </details>
+        </section>
+
+        <section class="feedback">
+            <fieldset>
+            <legend><h2>Feedback</h2></legend>
+            <p>Tell us about your experience with this Amazon Clone.</p>
+
+            <form class="feedback-form" action="#" method="post">
+                <div>
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" placeholder="Enter your name">
+                </div>
+
+                <div>
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" placeholder="Enter your email">
+                </div>
+
+                <div>
+                    <label for="rating">Overall rating</label>
+                    <div class="feedback-rating">
+                        <input type="radio" id="rating1" name="rating" value="1">
+                        <label for="rating1">1</label>
+
+                        <input type="radio" id="rating2" name="rating" value="2">
+                        <label for="rating2">2</label>
+
+                        <input type="radio" id="rating3" name="rating" value="3">
+                        <label for="rating3">3</label>
+
+                        <input type="radio" id="rating4" name="rating" value="4">
+                        <label for="rating4">4</label>
+
+                        <input type="radio" id="rating5" name="rating" value="5">
+                        <label for="rating5">5</label>
+                    </div>
+                </div>
+
+                <div>
+                    <label for="message">Your feedback</label>
+                    <textarea id="message" name="message" placeholder="Share your suggestions or issues"></textarea>
+                </div>
+
+                <button type="submit" class="feedback-btn">Submit</button>
+            </form>
+            </fieldset>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Amazon Clone. Made with HTML and CSS.</p>
+        </div>
+    </footer>
+</body>
+</html>
